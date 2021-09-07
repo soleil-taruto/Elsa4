@@ -27,6 +27,18 @@ namespace Charlotte.Games
 			string[] lines = ReadScenarioLines(name);
 			ScenarioPage page = null;
 
+			// シナリオデータに共通部を差し込み
+			{
+				int index = SCommon.IndexOf(lines, line => line.Trim().StartsWith("/"));
+
+				if (index == -1)
+					throw new DDError("シナリオデータの最初のページが見つかりません。");
+
+				lines = Common.Insert(lines, index + 1, new string[] { "#Include/Startup" });
+			}
+
+			// memo: lines タブスペース除去済み
+
 			for (int index = 0; index < lines.Length; index++)
 			{
 				string line = lines[index].Trim();
@@ -38,14 +50,11 @@ namespace Charlotte.Games
 				{
 					line = line.Substring(1); // # 除去
 
-					string[] tokens = SCommon.Tokenize(line, " ", false, true);
-					string subName = tokens[0];
-					string[] arguments = tokens.Skip(1).ToArray();
-					string[] subLines = ReadScenarioLines(subName);
+					string includeName = line.Trim();
+					string[] includeLines = ReadScenarioLines(includeName);
 
-					subLines = SolveArguments(subLines, ParseArguments(arguments));
-
-					lines = lines.Take(index).Concat(subLines).Concat(lines.Skip(index + 1)).ToArray();
+					lines = Common.Remove(lines, index, 1);
+					lines = Common.Insert(lines, index, includeLines);
 				}
 			}
 
@@ -169,31 +178,6 @@ namespace Charlotte.Games
 
 			string[] lines = SCommon.TextToLines(text);
 			return lines;
-		}
-
-		private Dictionary<string, string> ParseArguments(string[] arguments)
-		{
-			Dictionary<string, string> dest = new Dictionary<string, string>();
-
-			foreach (string argument in arguments)
-			{
-				string[] tokens = SCommon.Tokenize(argument, "=", false, true, 2);
-				string key = tokens[0];
-				string value = tokens[1];
-
-				dest[key] = value;
-			}
-			return dest;
-		}
-
-		private static string[] SolveArguments(string[] lines, Dictionary<string, string> arguments)
-		{
-			string text = SCommon.LinesToText(lines);
-
-			foreach (var pair in arguments)
-				text = text.Replace(pair.Key, pair.Value);
-
-			return SCommon.TextToLines(text);
 		}
 	}
 }
