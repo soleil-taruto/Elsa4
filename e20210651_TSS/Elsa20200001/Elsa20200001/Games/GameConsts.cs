@@ -33,7 +33,7 @@ namespace Charlotte.Games
 
 		// ----
 
-		public const string DUMMY_SCENARIO_NAME = "ダミーシナリオ";
+		public const string DUMMY_SCENARIO_NAME = "Tests/ダミーシナリオ";
 		public const string FIRST_SCENARIO_NAME = "0001_スタートシナリオ";
 
 		public const int MESSAGE_SPEED_MIN = 1; // 遅い

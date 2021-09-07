@@ -24,5 +24,23 @@ namespace Charlotte.Tests.Novels
 				Novel.I.Perform();
 			}
 		}
+
+		public void Test03()
+		{
+			string name;
+
+			// ---- choose one ----
+
+			//name = "Tests/テスト0001";
+			name = "Start";
+
+			// ----
+
+			using (new Novel())
+			{
+				Novel.I.Status.Scenario = new Scenario(name);
+				Novel.I.Perform();
+			}
+		}
 	}
 }

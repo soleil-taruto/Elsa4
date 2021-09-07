@@ -5,8 +5,8 @@ using System.Text;
 using DxLibDLL;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
-using Charlotte.Novels.Surfaces;
 using Charlotte.Games;
+using Charlotte.Novels.Surfaces;
 
 namespace Charlotte.Novels
 {
@@ -15,6 +15,10 @@ namespace Charlotte.Novels
 		public NovelStatus Status = new NovelStatus(); // 軽量な仮設オブジェクト
 
 		// <---- prm
+
+		public bool ReturnToTitleMenu = false;
+
+		// <---- ret
 
 		public static Novel I;
 
@@ -183,7 +187,10 @@ namespace Charlotte.Novels
 							throw null; // never
 					}
 					if (this.SystemMenu_ReturnToTitleMenu)
+					{
+						this.ReturnToTitleMenu = true;
 						break;
+					}
 				}
 
 				if (
