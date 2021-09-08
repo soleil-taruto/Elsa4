@@ -22,14 +22,16 @@ namespace Charlotte.Games.Attacks
 
 			for (int frame = 0; ; frame++)
 			{
-				//int koma = frame;
-				//int koma = frame / 2;
-				int koma = frame / 3;
+				//int FRAME_PER_KOMA = 1;
+				//int FRAME_PER_KOMA = 2;
+				int FRAME_PER_KOMA = 3;
+
+				int koma = frame / FRAME_PER_KOMA;
 
 				if (Ground.I.Picture2.Tewi_しゃがみ強攻撃.Length <= koma)
 					break;
 
-				if (frame == 5 * 3)
+				if (frame == 5 * FRAME_PER_KOMA)
 				{
 					Game.I.Player.X += 54 * (Game.I.Player.FacingLeft ? -1.0 : 1.0);
 					zureX = 16;
@@ -40,12 +42,15 @@ namespace Charlotte.Games.Attacks
 				double xZoom = Game.I.Player.FacingLeft ? -1.0 : 1.0;
 				bool facingLeft = Game.I.Player.FacingLeft;
 
-				if (frame == 6 * 3)
+				if (frame == 6 * FRAME_PER_KOMA)
 				{
 					Game.I.Shots.Add(new Shot_OneTime(
 						20,
 						DDCrashUtils.Rect_CenterSize(
-							new D2Point(Game.I.Player.X, Game.I.Player.Y),
+							new D2Point(
+								Game.I.Player.X,
+								Game.I.Player.Y
+								),
 							new D2Size(200.0, 120.0)
 							)
 						));
