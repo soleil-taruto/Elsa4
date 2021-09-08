@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Charlotte.Commons;
 using Charlotte.GameCommons;
 using Charlotte.Games.Shots;
 
@@ -41,7 +42,13 @@ namespace Charlotte.Games.Attacks
 
 				if (frame == 6 * 3)
 				{
-					// TODO: 当たり判定設定
+					Game.I.Shots.Add(new Shot_OneTime(
+						20,
+						DDCrashUtils.Rect_CenterSize(
+							new D2Point(Game.I.Player.X, Game.I.Player.Y),
+							new D2Size(200.0, 120.0)
+							)
+						));
 				}
 
 				DDDraw.SetTaskList(Game.I.Player.Draw_EL);
