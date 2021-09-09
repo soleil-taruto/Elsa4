@@ -639,7 +639,20 @@ namespace Charlotte.Games
 					this.カメラ位置調整(true);
 				}
 
-				DDCrash plCrash = DDCrashUtils.Point(new D2Point(this.Player.X, this.Player.Y));
+				DDCrash plCrash;
+
+				if (1 <= this.Player.AirborneFrame)
+				{
+					plCrash = DDCrashUtils.Point(new D2Point(this.Player.X, this.Player.Y));
+				}
+				else if (1 <= this.Player.ShagamiFrame)
+				{
+					plCrash = DDCrashUtils.Point(new D2Point(this.Player.X, this.Player.Y + 25.0));
+				}
+				else
+				{
+					plCrash = DDCrashUtils.Point(new D2Point(this.Player.X, this.Player.Y + 10.0));
+				}
 
 				// ====
 				// 描画ここから
