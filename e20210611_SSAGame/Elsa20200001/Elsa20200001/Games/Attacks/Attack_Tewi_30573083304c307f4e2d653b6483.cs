@@ -36,7 +36,7 @@ namespace Charlotte.Games.Attacks
 				if (frame == 4 * FRAME_PER_KOMA)
 				{
 					Game.I.Shots.Add(new Shot_OneTime(
-						15,
+						20,
 						DDCrashUtils.Rect_CenterSize(
 							new D2Point(
 								Game.I.Player.X + 50.0 * (Game.I.Player.FacingLeft ? -1.0 : 1.0),

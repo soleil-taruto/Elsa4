@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Charlotte.Commons;
 using Charlotte.GameCommons;
 using Charlotte.Games.Shots;
 
@@ -22,8 +23,6 @@ namespace Charlotte.Games.Attacks
 					break;
 
 				int koma = frame;
-				//int koma = frame / 2;
-				//int koma = frame / 3;
 
 				koma += 2; // 最初の2コマを飛ばす。
 				if (6 <= koma) // koma == 6 以降は(1コマ/2フレーム)
@@ -44,9 +43,19 @@ namespace Charlotte.Games.Attacks
 				double xZoom = Game.I.Player.FacingLeft ? -1.0 : 1.0;
 				bool facingLeft = Game.I.Player.FacingLeft;
 
-				if (frame == 0)
+				if (4 <= frame && frame < 20) // 16回
 				{
-					// TODO: 当たり判定設定
+					Game.I.Shots.Add(new Shot_OneTime(
+						2,
+						//30,
+						DDCrashUtils.Circle(
+							new D2Point(
+								Game.I.Player.X + 2.0 * (Game.I.Player.FacingLeft ? -1.0 : 1.0),
+								Game.I.Player.Y + 2.0
+								),
+							70.0
+							)
+						));
 				}
 
 				AttackCommon.ProcPlayer_移動();

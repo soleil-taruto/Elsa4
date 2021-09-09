@@ -45,10 +45,10 @@ namespace Charlotte.Games.Attacks
 				if (frame == 6 * FRAME_PER_KOMA)
 				{
 					Game.I.Shots.Add(new Shot_OneTime(
-						20,
+						30,
 						DDCrashUtils.Rect_CenterSize(
 							new D2Point(
-								Game.I.Player.X,
+								Game.I.Player.X + 10.0 * (Game.I.Player.FacingLeft ? -1.0 : 1.0),
 								Game.I.Player.Y
 								),
 							new D2Size(200.0, 120.0)
