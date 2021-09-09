@@ -44,7 +44,8 @@ namespace Charlotte.Tests.Games
 			using (new WorldGameMaster())
 			{
 				WorldGameMaster.I.World = new World(startMapName);
-				WorldGameMaster.I.Status = new GameStatus();
+				//WorldGameMaster.I.Status = new GameStatus();
+				WorldGameMaster.I.Status = new GameStatus() { StartChara = Player.Chara_e.CIRNO }; // チルノで開始
 				WorldGameMaster.I.Perform();
 			}
 		}

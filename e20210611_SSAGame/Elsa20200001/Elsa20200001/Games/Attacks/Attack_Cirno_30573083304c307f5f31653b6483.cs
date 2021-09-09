@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Charlotte.Commons;
 using Charlotte.GameCommons;
 using Charlotte.Games.Shots;
 
@@ -18,9 +19,11 @@ namespace Charlotte.Games.Attacks
 		{
 			for (int frame = 0; ; frame++)
 			{
-				int koma = frame;
-				//int koma = frame / 2;
-				//int koma = frame / 3;
+				int FRAME_PER_KOMA = 1;
+				//int FRAME_PER_KOMA = 2;
+				//int FRAME_PER_KOMA = 3;
+
+				int koma = frame / FRAME_PER_KOMA;
 
 				if (Ground.I.Picture2.Cirno_しゃがみ攻撃.Length <= koma)
 					break;
@@ -30,9 +33,18 @@ namespace Charlotte.Games.Attacks
 				double xZoom = Game.I.Player.FacingLeft ? -1.0 : 1.0;
 				bool facingLeft = Game.I.Player.FacingLeft;
 
-				if (frame == 6 * 4)
+				if (frame == 5 * FRAME_PER_KOMA)
 				{
-					// TODO: 当たり判定設定
+					Game.I.Shots.Add(new Shot_OneTime(
+						10,
+						DDCrashUtils.Rect_CenterSize(
+							new D2Point(
+								Game.I.Player.X + 45.0 * (Game.I.Player.FacingLeft ? -1.0 : 1.0),
+								Game.I.Player.Y - 10.0
+								),
+							new D2Size(90.0, 120.0)
+							)
+						));
 				}
 
 				DDDraw.SetTaskList(Game.I.Player.Draw_EL);
