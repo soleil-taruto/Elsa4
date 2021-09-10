@@ -153,12 +153,12 @@ namespace Charlotte.LevelEditors
 				this.TileEnemySw.Text = TEXT_MODE_TILE;
 		}
 
-		private void Tile_Click(object sender, EventArgs e)
+		private void TileClick(object sender, EventArgs e)
 		{
 			this.TileEnemySw.Text = TEXT_MODE_TILE;
 		}
 
-		private void Enemy_Click(object sender, EventArgs e)
+		private void EnemyClick(object sender, EventArgs e)
 		{
 			this.TileEnemySw.Text = TEXT_MODE_ENEMY;
 		}

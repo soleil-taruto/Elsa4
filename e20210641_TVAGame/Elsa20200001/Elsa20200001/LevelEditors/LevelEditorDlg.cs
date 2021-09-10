@@ -8,12 +8,17 @@ using System.Text;
 using System.Windows.Forms;
 using System.Security.Permissions;
 using Charlotte.Commons;
-using Charlotte.GameCommons;
 using Charlotte.Games.Tiles;
 using Charlotte.Games.Enemies;
+using Charlotte.Games;
+using Charlotte.GameCommons;
 
 namespace Charlotte.LevelEditors
 {
+	// memo:
+	// xxxxxxxxxx // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+	// という行は xxxxxxxxxx の部分について難読化による単語の置き換えを行わない。(xxxxxxxxxx は任意の文字列)
+
 	public partial class LevelEditorDlg : Form
 	{
 		#region ALT_F4 抑止
@@ -66,7 +71,10 @@ namespace Charlotte.LevelEditors
 			P_PostSetItems(this.TileGroup_R);
 			P_PostSetItems(this.EnemyGroup);
 
-			this.TileEnemySw.Text = TEXT_MODE_TILE;
+			this.SetMode(LevelEditor.Mode_e.TILE);
+
+			this.TileEnemySw
+				.Focus(); // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
 		}
 
 		private void P_PostSetItems(
@@ -168,38 +176,64 @@ namespace Charlotte.LevelEditors
 			return this.ShowEnemy.Checked;
 		}
 
+		private const string TEXT_MODE_TILE = "タイル";
+		private const string TEXT_MODE_ENEMY = "敵 / イベントオブジェクト";
+
 		public LevelEditor.Mode_e GetMode()
 		{
 			return this.TileEnemySw.Text == TEXT_MODE_TILE ? LevelEditor.Mode_e.TILE : LevelEditor.Mode_e.ENEMY;
 		}
 
-		private const string TEXT_MODE_TILE = "タイル";
-		private const string TEXT_MODE_ENEMY = "敵 / イベントオブジェクト";
+		private void SetMode(LevelEditor.Mode_e mode)
+		{
+			Color COLOR_SELECTED = Color
+				.Blue; // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+			Color COLOR_UNSELECTED = Color
+				.Gray; // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+
+			if (mode == LevelEditor.Mode_e.TILE)
+			{
+				this.TileEnemySw.Text = TEXT_MODE_TILE;
+
+				this.GroupTile
+					.ForeColor = // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+						COLOR_SELECTED;
+				this.GroupEnemy
+					.ForeColor = // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+						COLOR_UNSELECTED;
+			}
+			else
+			{
+				this.TileEnemySw.Text = TEXT_MODE_ENEMY;
+
+				this.GroupTile
+					.ForeColor = // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+						COLOR_UNSELECTED;
+				this.GroupEnemy
+					.ForeColor = // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+						COLOR_SELECTED;
+			}
+		}
 
 		private void TileEnemySw_Click(object sender, EventArgs e)
 		{
 			if (this.TileEnemySw.Text == TEXT_MODE_TILE)
-				this.TileEnemySw.Text = TEXT_MODE_ENEMY;
+				this.SetMode(LevelEditor.Mode_e.ENEMY);
 			else
-				this.TileEnemySw.Text = TEXT_MODE_TILE;
+				this.SetMode(LevelEditor.Mode_e.TILE);
 		}
 
-		private void Tile_L_Click(object sender, EventArgs e)
+		private void TileClick(object sender, EventArgs e)
 		{
-			this.TileEnemySw.Text = TEXT_MODE_TILE;
+			this.SetMode(LevelEditor.Mode_e.TILE);
 		}
 
-		private void Tile_R_Click(object sender, EventArgs e)
+		private void EnemyClick(object sender, EventArgs e)
 		{
-			this.TileEnemySw.Text = TEXT_MODE_TILE;
+			this.SetMode(LevelEditor.Mode_e.ENEMY);
 		}
 
-		private void Enemy_Click(object sender, EventArgs e)
-		{
-			this.TileEnemySw.Text = TEXT_MODE_ENEMY;
-		}
-
-		private void タイルGroup_Enter(object sender, EventArgs e)
+		private void GroupTile_Enter(object sender, EventArgs e)
 		{
 			// noop
 		}
@@ -234,7 +268,7 @@ namespace Charlotte.LevelEditors
 			// noop
 		}
 
-		private void 敵Group_Enter(object sender, EventArgs e)
+		private void GroupEnemy_Enter(object sender, EventArgs e)
 		{
 			// noop
 		}
