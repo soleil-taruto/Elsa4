@@ -223,17 +223,12 @@ namespace Charlotte.LevelEditors
 				this.SetMode(LevelEditor.Mode_e.TILE);
 		}
 
-		private void Tile_L_Click(object sender, EventArgs e)
+		private void TileClick(object sender, EventArgs e)
 		{
 			this.SetMode(LevelEditor.Mode_e.TILE);
 		}
 
-		private void Tile_R_Click(object sender, EventArgs e)
-		{
-			this.SetMode(LevelEditor.Mode_e.TILE);
-		}
-
-		private void Enemy_Click(object sender, EventArgs e)
+		private void EnemyClick(object sender, EventArgs e)
 		{
 			this.SetMode(LevelEditor.Mode_e.ENEMY);
 		}

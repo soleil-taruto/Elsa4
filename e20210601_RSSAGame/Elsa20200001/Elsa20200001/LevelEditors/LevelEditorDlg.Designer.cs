@@ -71,6 +71,7 @@
 			this.TileMember_R.Size = new System.Drawing.Size(348, 28);
 			this.TileMember_R.TabIndex = 3;
 			this.TileMember_R.SelectedIndexChanged += new System.EventHandler(this.TileMember_R_SelectedIndexChanged);
+			this.TileMember_R.Click += new System.EventHandler(this.TileClick);
 			// 
 			// TileMember_L
 			// 
@@ -83,6 +84,7 @@
 			this.TileMember_L.Size = new System.Drawing.Size(348, 28);
 			this.TileMember_L.TabIndex = 2;
 			this.TileMember_L.SelectedIndexChanged += new System.EventHandler(this.TileMember_L_SelectedIndexChanged);
+			this.TileMember_L.Click += new System.EventHandler(this.TileClick);
 			// 
 			// TileGroup_R
 			// 
@@ -95,7 +97,7 @@
 			this.TileGroup_R.Size = new System.Drawing.Size(348, 28);
 			this.TileGroup_R.TabIndex = 1;
 			this.TileGroup_R.SelectedIndexChanged += new System.EventHandler(this.TileGroup_R_SelectedIndexChanged);
-			this.TileGroup_R.Click += new System.EventHandler(this.Tile_R_Click);
+			this.TileGroup_R.Click += new System.EventHandler(this.TileClick);
 			// 
 			// TileGroup_L
 			// 
@@ -108,7 +110,7 @@
 			this.TileGroup_L.Size = new System.Drawing.Size(348, 28);
 			this.TileGroup_L.TabIndex = 0;
 			this.TileGroup_L.SelectedIndexChanged += new System.EventHandler(this.TileGroup_L_SelectedIndexChanged);
-			this.TileGroup_L.Click += new System.EventHandler(this.Tile_L_Click);
+			this.TileGroup_L.Click += new System.EventHandler(this.TileClick);
 			// 
 			// GroupEnemy
 			// 
@@ -135,6 +137,7 @@
 			this.EnemyMember.Size = new System.Drawing.Size(348, 28);
 			this.EnemyMember.TabIndex = 1;
 			this.EnemyMember.SelectedIndexChanged += new System.EventHandler(this.EnemyMember_SelectedIndexChanged);
+			this.EnemyMember.Click += new System.EventHandler(this.EnemyClick);
 			// 
 			// EnemyGroup
 			// 
@@ -147,7 +150,7 @@
 			this.EnemyGroup.Size = new System.Drawing.Size(348, 28);
 			this.EnemyGroup.TabIndex = 0;
 			this.EnemyGroup.SelectedIndexChanged += new System.EventHandler(this.EnemyGroup_SelectedIndexChanged);
-			this.EnemyGroup.Click += new System.EventHandler(this.Enemy_Click);
+			this.EnemyGroup.Click += new System.EventHandler(this.EnemyClick);
 			// 
 			// ShowTile
 			// 
