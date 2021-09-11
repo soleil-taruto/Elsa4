@@ -549,6 +549,11 @@ namespace Charlotte.Commons
 			}
 		}
 
+		public static void Write(FileStream writer, byte[] buff, int offset = 0)
+		{
+			writer.Write(buff, offset, buff.Length - offset);
+		}
+
 		/// <summary>
 		/// 行リストをテキストに変換します。
 		/// </summary>
