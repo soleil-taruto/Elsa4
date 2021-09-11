@@ -54,7 +54,12 @@ namespace Charlotte.Commons
 
 		public static int IndexOf<T>(IList<T> list, Predicate<T> match)
 		{
-			for (int index = 0; index < list.Count; index++)
+			return IndexOf(list, match, 0);
+		}
+
+		public static int IndexOf<T>(IList<T> list, Predicate<T> match, int startIndex) // 難読化のため、デフォルト引数をオーバーロードの引数に指定する。
+		{
+			for (int index = startIndex; index < list.Count; index++)
 				if (match(list[index]))
 					return index;
 
@@ -99,7 +104,12 @@ namespace Charlotte.Commons
 			return ToBytes((uint)value);
 		}
 
-		public static int ToInt(byte[] src, int index = 0)
+		public static int ToInt(byte[] src)
+		{
+			return ToInt(src, 0);
+		}
+
+		public static int ToInt(byte[] src, int index) // 難読化のため、デフォルト引数をオーバーロードの引数に指定する。
 		{
 			return (int)ToUInt(src, index);
 		}
@@ -111,7 +121,12 @@ namespace Charlotte.Commons
 			return dest;
 		}
 
-		public static void ToBytes(uint value, byte[] dest, int index = 0)
+		public static void ToBytes(uint value, byte[] dest)
+		{
+			ToBytes(value, dest, 0);
+		}
+
+		public static void ToBytes(uint value, byte[] dest, int index)
 		{
 			dest[index + 0] = (byte)((value >> 0) & 0xff);
 			dest[index + 1] = (byte)((value >> 8) & 0xff);
@@ -119,7 +134,12 @@ namespace Charlotte.Commons
 			dest[index + 3] = (byte)((value >> 24) & 0xff);
 		}
 
-		public static uint ToUInt(byte[] src, int index = 0)
+		public static uint ToUInt(byte[] src)
+		{
+			return ToUInt(src, 0);
+		}
+
+		public static uint ToUInt(byte[] src, int index)
 		{
 			return
 				((uint)src[index + 0] << 0) |
@@ -536,7 +556,12 @@ namespace Charlotte.Commons
 			return buff;
 		}
 
-		public static void Read(FileStream reader, byte[] buff, int offset = 0)
+		public static void Read(FileStream reader, byte[] buff)
+		{
+			Read(reader, buff, 0);
+		}
+
+		public static void Read(FileStream reader, byte[] buff, int offset) // 難読化のため、デフォルト引数をオーバーロードの引数に指定する。
 		{
 			Read(reader, buff, offset, buff.Length - offset);
 		}
@@ -549,7 +574,12 @@ namespace Charlotte.Commons
 			}
 		}
 
-		public static void Write(FileStream writer, byte[] buff, int offset = 0)
+		public static void Write(FileStream writer, byte[] buff)
+		{
+			Write(writer, buff, 0);
+		}
+
+		public static void Write(FileStream writer, byte[] buff, int offset) // 難読化のため、デフォルト引数をオーバーロードの引数に指定する。
 		{
 			writer.Write(buff, offset, buff.Length - offset);
 		}
