@@ -32,7 +32,8 @@ namespace Charlotte.Games.Enemies
 
 				DDDraw.DrawCenter(Ground.I.Picture.Teki_a01_Shit01, this.X - DDGround.ICamera.X, this.Y - DDGround.ICamera.Y);
 
-				this.Crash = DDCrashUtils.Point(new D2Point(this.X, this.Y));
+				this.Crash = DDCrashUtils.Circle(new D2Point(this.X, this.Y), 10.0);
+				//this.Crash = DDCrashUtils.Point(new D2Point(this.X, this.Y));
 
 				yield return true;
 			}
