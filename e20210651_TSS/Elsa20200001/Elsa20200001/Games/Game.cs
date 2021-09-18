@@ -269,8 +269,8 @@ namespace Charlotte.Games
 		private Func<bool> SortSurfaces = null;
 
 		/// <summary>
-		/// <para>主たる画面描画</para>
-		/// <para>色々な場所(モード)から呼び出されるだろう。</para>
+		/// 主たる画面描画
+		/// 色々な場所(モード)から呼び出されるだろう。
 		/// </summary>
 		public void DrawSurfaces()
 		{

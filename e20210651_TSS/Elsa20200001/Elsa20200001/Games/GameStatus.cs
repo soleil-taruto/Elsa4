@@ -9,8 +9,8 @@ using Charlotte.Commons;
 namespace Charlotte.Games
 {
 	/// <summary>
-	/// <para>ゲームの現在の状態を保持する。</para>
-	/// <para>セーブ・ロード時にこのクラスの内容を保存・再現する。</para>
+	/// ゲームの現在の状態を保持する。
+	/// セーブ・ロード時にこのクラスの内容を保存・再現する。
 	/// </summary>
 	public class GameStatus
 	{

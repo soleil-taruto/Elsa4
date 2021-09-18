@@ -22,10 +22,10 @@ namespace Charlotte.Novels.Surfaces
 		}
 
 		/// <summary>
-		/// <para>アクションのリスト</para>
-		/// <para>Act.Draw が false を返したとき this.Draw を実行しなければならない。</para>
-		/// <para>セーブ・ロード時にこのフィールドは保存・再現されない。</para>
-		/// <para>-- セーブ前に Flush しなければならない。</para>
+		/// アクションのリスト
+		/// Act.Draw が false を返したとき this.Draw を実行しなければならない。
+		/// セーブ・ロード時にこのフィールドは保存・再現されない。
+		/// -- セーブ前に Flush しなければならない。
 		/// </summary>
 		public NovelAct Act = new NovelAct();
 
@@ -34,11 +34,11 @@ namespace Charlotte.Novels.Surfaces
 		public int Z = 0;
 
 		/// <summary>
-		/// <para>コマンドを実行する。</para>
-		/// <para>ここでは共通のコマンドを処理し、個別のコマンドを処理するために Invoke_02 を呼び出す。</para>
-		/// <para>★コマンドの処理は原則的に Act へ追加すること。</para>
-		/// <para>-- Act へ追加しない場合は if 行に「即時」とコメントする。</para>
-		/// <para>-- 非即時コマンド名と区別するために、接頭辞 I- を付ける。(Immediate)</para>
+		/// コマンドを実行する。
+		/// ここでは共通のコマンドを処理し、個別のコマンドを処理するために Invoke_02 を呼び出す。
+		/// ★コマンドの処理は原則的に Act へ追加すること。
+		/// -- Act へ追加しない場合は if 行に「即時」とコメントする。
+		/// -- 非即時コマンド名と区別するために、接頭辞 I- を付ける。(Immediate)
 		/// </summary>
 		/// <param name="command">コマンド名</param>
 		/// <param name="arguments">コマンド引数列</param>
